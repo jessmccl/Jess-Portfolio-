@@ -1,0 +1,20 @@
+SELECT *, COUNT(item_name)
+FROM superstore
+GROUP BY price;
+
+-- Write your own SQL query that will show a statistic about the item prices, like a sum, average, minimum, maximum, or count.
+
+SELECT AVG(price)
+FROM superstore 
+;
+
+-- Write your own SQL query that will show a statistic about the price for items in the category of "Kitchen Supplies"
+
+SELECT *, SUM(price)
+FROM superstore
+GROUP BY('Kitchen Supplies') ;
+
+-- Come up with your own question about the data and try to answer it using SQL. For example: How many air purifiers are in stock?
+
+SELECT MIN(price)
+FROM superstore;
