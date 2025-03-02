@@ -1,0 +1,40 @@
+
+-- Used an aggregate function like AVG, SUM, COUNT, MAX, and/or MIN to return summary statistics about the data.
+SELECT company_id, company_name
+FROM fortune_companies
+WHERE EMPLOYEES >=1000
+AND avg_employee_tenure>4.5;
+
+
+-- Used logical operators like AND or OR to filter the data in an interesting way.
+SELECT MAX(revenue)
+FROM fortune_companies 
+WHERE paid_time_off_days>=20
+AND maternity_leave_weeks>=12;
+
+
+-- Used a HAVING clause to determine something interesting about the data per category.
+SELECT company_name, AVG(avg_employee_tenure) AS avg_tenure
+FROM fortune_companies
+WHERE employees>=50000
+GROUP BY company_name
+HAVING revenue>=250
+;
+
+
+-- Grouped the data in a new way using a CASE statement.
+SELECT company_name, company_id,
+CASE WHEN avg_employee_tenure>=5 THEN "Great workplace"
+WHEN avg_employee_tenure=5 THEN "Average workplace"
+WHEN avg_employee_tenure<=5 THEN "Poor workplace"
+ELSE "Not assessable"
+END AS workplace_culture
+FROM fortune_companies
+WHERE avg_employee_tenure>=5
+ORDER BY avg_employee_tenure asc;
+
+
+
+-- Used an aggregate function like AVG, SUM, COUNT, MAX, and/or MIN to return summary statistics about the data. 
+SELECT SUM(revenue) 
+FROM fortune_companies;
