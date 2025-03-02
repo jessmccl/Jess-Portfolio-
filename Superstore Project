@@ -1,3 +1,6 @@
+
+-- Write a SQL query that orders the items by price.
+
 SELECT *, COUNT(item_name)
 FROM superstore
 GROUP BY price;
